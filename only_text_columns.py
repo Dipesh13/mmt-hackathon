@@ -30,7 +30,7 @@ y = df['P']
 X_train, X_test, y_train, y_test = train_test_split(text_data, y, test_size = 0.2, random_state=42, stratify=y)
 
 clf = Pipeline([
-    ('vec', CountVectorizer(stop_words=None)),
+    ('vec', CountVectorizer()),
     ('model', DecisionTreeClassifier(max_depth=5))
 ])
 
@@ -40,5 +40,5 @@ for key,value in config_dict.items():
     # y_pred = clf.predict(X_test)
     train_accuracy = clf.score(X_train, y_train)
     test_accuracy= clf.score(X_test, y_test)
-    print(key,train_accuracy)
-    print(key, test_accuracy)
+    print(key,'Train acc:',train_accuracy)
+    print(key,'Test acc:',test_accuracy)
